@@ -16,8 +16,8 @@ public class LoginPage {
 
 	public void enterCredentials() {
 		WebElement username = driver.findElement(By.xpath("//*[@id='userid']"));
-		username.sendKeys("DAA677");
-		driver.findElement(By.xpath("//*[@id='password']")).sendKeys("Velocity@123");
+		username.sendKeys("username");
+		driver.findElement(By.xpath("//*[@id='password']")).sendKeys("password");
 
 	}
 
