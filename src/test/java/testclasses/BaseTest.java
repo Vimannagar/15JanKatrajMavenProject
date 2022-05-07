@@ -1,7 +1,10 @@
 package testclasses;
 
+import java.io.IOException;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
@@ -10,23 +13,35 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import pages.DashBoard;
 import pages.LoginPage;
 import pages.LoginPageAdvance;
+import utility.ReadDataFromConfig;
 
 public class BaseTest {
-	static WebDriver driver;
-	LoginPageAdvance lp;
-	DashBoard db;
+	public static WebDriver driver;
+	public LoginPageAdvance lp;
+public	DashBoard db;
 	
 	@BeforeSuite
-	public void initBrowser() {
+	public void initBrowser() throws IOException {
 //		System.setProperty("webdriver.chrome.driver", "E:\\desktop\\Katraj\\15 Jan\\Selenium\\Chromedriver 101\\chromedriver.exe");
 
 		
 		WebDriverManager.chromedriver().setup();
-		driver = new ChromeDriver();// chrome browser will get open
+		
+		ChromeOptions options = new ChromeOptions();
+		
+		options.addArguments("--disable-notifications");
+		
+		options.addArguments("--incognito");
+		
+		options.addArguments("--start-maximized");
+		
+		driver = new ChromeDriver(options);// chrome browser will get open
 
-		driver.manage().window().maximize();// to maximize the window
+//		driver.manage().window().maximize();// to maximize the window
 
-		driver.get("https://kite.zerodha.com/");
+		String url = ReadDataFromConfig.getPropData("testsiteurl");
+		
+		driver.get(url);
 	}
 	
 	

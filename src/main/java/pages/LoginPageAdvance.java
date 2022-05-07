@@ -37,8 +37,8 @@ public class LoginPageAdvance {
 
 	public void enterCredentials() {
 		
-		username.sendKeys("username");
-		password.sendKeys("password");
+		username.sendKeys("DAA677");
+		password.sendKeys("Velocity@123");
 
 	}
 
