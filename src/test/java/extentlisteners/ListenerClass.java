@@ -27,6 +27,8 @@ public class ListenerClass extends BaseTest implements ITestListener
 		System.out.println("Test case started :"+result.getName());
 		test = extent.createTest(result.getName());
 		
+		driver.manage().deleteAllCookies();
+		
 	}
 
 	@Override
