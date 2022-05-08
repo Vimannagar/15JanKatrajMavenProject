@@ -1,5 +1,6 @@
 package pages;
 
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -8,7 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LoginPageAdvance {
+public class LoginPageAdvance extends BaseClass {
 
 	WebDriver driver;
 	@FindBy(xpath ="//*[@id='userid']")
@@ -26,10 +27,10 @@ public class LoginPageAdvance {
 	
 
 	@FindBy(xpath ="//*[@type='button']")
-	WebElement button;
+	private WebElement button;
 	
 
-	public LoginPageAdvance(WebDriver driver) {
+	public LoginPageAdvance(WebDriver driver) throws IOException {
 		this.driver = driver;
 		
 		PageFactory.initElements(driver, this);
@@ -37,8 +38,8 @@ public class LoginPageAdvance {
 
 	public void enterCredentials() {
 		
-		username.sendKeys("DAA677");
-		password.sendKeys("Velocity@123");
+		username.sendKeys(prop.getProperty("username"));
+		password.sendKeys(prop.getProperty("password"));
 
 	}
 
@@ -48,7 +49,7 @@ public class LoginPageAdvance {
 
 	public void enterPin() {
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-		pintextfield.sendKeys("866918");
+		pintextfield.sendKeys(prop.getProperty("pin"));
 		loginbutton.click();
 	}
 

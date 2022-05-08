@@ -31,9 +31,12 @@ public	DashBoard db;
 		
 		options.addArguments("--disable-notifications");
 		
-		options.addArguments("--incognito");
+//		options.addArguments("--incognito");
 		
 		options.addArguments("--start-maximized");
+		
+		options.addArguments("--headless");
+//		Headless is a mode in which we execute the script but it will not display any activity to the user 
 		
 		driver = new ChromeDriver(options);// chrome browser will get open
 
@@ -54,7 +57,7 @@ public	DashBoard db;
 	
 	
 	@BeforeClass
-	public void objectCreation()
+	public void objectCreation() throws IOException
 	{
 		 lp = new LoginPageAdvance(driver);
 		 db = new DashBoard(driver);
